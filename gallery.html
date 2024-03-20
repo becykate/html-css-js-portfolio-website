@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link id="stylesheet" rel="stylesheet" href="light.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/about-pic.png">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  </head>
+  <body>
+    <nav id="desktop-nav">
+        <label class="switch">
+          <input id="toggle" type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+        <div class="logo gallery-logo" onclick="redirectToIndex()">Rebecca Hunt</div>
+              <div>
+                <ul class="nav-links">
+                  <li><a href="/index.html#about">About</a></li>
+                  <li><a href="/index.html#experience">Experience</a></li>
+                  <li><a href="/index.html#projects">Projects</a></li>
+                  <li><a href="/index.html#contact">Contact</a></li>
+                  <li><a href="/gallery.html">Gallery</a></li>
+                </ul>
+              </div>
+            </nav>
+            <nav id="hamburger-nav">
+              <div class="logo gallery-logo" onclick="redirectToIndex()">Rebecca Hunt</div>
+              <div class="hamburger-menu">
+                <div class="hamburger-icon invert" onclick="toggleMenu()">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="menu-links">
+                  <li><a href="/index.html#about" onclick="toggleMenu()">About</a></li>
+                  <li><a href="/index.html#experience" onclick="toggleMenu()">Experience</a></li>
+                  <li><a href="/index.html#projects" onclick="toggleMenu()">Projects</a></li>
+                  <li><a href="/index.html#contact" onclick="toggleMenu()">Contact</a></li>
+                  <li><a href="/gallery.html" onclick="toggleMenu()">Gallery</a></li>
+                </div>
+              </div>
+            </nav>
+            <h1 class="title" id="trailName"> My Travels Across Japan!</h1>
+
+            <div id="map"></div>
+            
+            <div id="gallery-container">
+
+<button class="btn btn-color-2" onclick="window.open('https://photos.app.goo.gl/AScEAihW3fQBBgv28', '_blank')">Come See My Travel Photos!</button>
+
+</div>
+<script src="checkpoints.js" type="module"></script>
+<script src="map.js" type="module"></script>            
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script.js"></script>
+  
+  </body>
+  <footer>
+    <nav>
+      <div class="nav-links-container">
+        <ul class="nav-links">
+            <li><a href="/index.html#about">About</a></li>
+          <li><a href="/index.html#experience">Experience</a></li>
+          <li><a href="/index.html#projects">Projects</a></li>
+          <li><a href="/index.html#contact">Contact</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+
+  </footer>
+</body>
+</html>

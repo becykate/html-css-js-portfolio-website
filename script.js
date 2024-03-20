@@ -1,26 +1,108 @@
-function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
+function redirectToIndex() {
+    window.location.href = "/index.html";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const stylesheetLink = document.getElementById("stylesheet");
-
-  // Function to change the CSS file
-  function changeCSSFile(newCSSFileName) {
-    stylesheetLink.href = newCSSFileName;
+function toggleMenu() {
+    const menu = document.querySelector(".menu-links");
+    const icon = document.querySelector(".hamburger-icon");
+    const isOpen = menu.classList.contains("open");
+    
+    if (isOpen) {
+      menu.classList.remove("open");
+      icon.classList.remove("open");
+    } else {
+      menu.classList.add("open");
+      icon.classList.add("open");
+    }
   }
+const toggle = document.getElementById("toggle");
 
-  
+function changeCSSFile(filename) {
+    document.getElementById("stylesheet").href = filename;
+}
 
-  const toggle = document.getElementById("toggle");
-  toggle.addEventListener("change", function() {
+function saveToggleState() {
+    localStorage.setItem("darkModeEnabled", toggle.checked);
+}
+
+function loadToggleState() {
+    const darkModeEnabled = localStorage.getItem("darkModeEnabled");
+    if (darkModeEnabled === "true") {
+        toggle.checked = true;
+        changeCSSFile("dark.css");
+    } else {
+        toggle.checked = false;
+        changeCSSFile("light.css");
+    }
+}
+
+toggle.addEventListener("change", function() {
     if (toggle.checked) {
         changeCSSFile("dark.css");
     } else {
         changeCSSFile("light.css");
     }
+    saveToggleState(); 
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadToggleState();
+    
 });
+
+
+// Define the admin code
+const adminCode = 'japan';
+
+
+function promptForAdminCode() {
+    const enteredCode = prompt('Enter admin code:');
+
+    
+    if (enteredCode === adminCode) {
+        window.location.href = '/gallery.html';
+    } else {
+        alert('Incorrect admin code. Access denied.');
+    }
+}
+
+// Attach the click event to the "Gallery" links
+document.getElementById('galleryLink').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    document.getElementById('passwordOverlay').style.display = 'block';
+});
+
+document.getElementById('hamburger-galleryLink').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    document.getElementById('passwordOverlay').style.display = 'block';
+});
+
+
+document.getElementById('galleryLinkFooter').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    document.getElementById('passwordOverlay').style.display = 'block';
+});
+
+document.getElementById('adminCodeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    handleAdminPasswordSubmit();
+});
+
+
+function handleAdminPasswordSubmit() {
+    const enteredCode = document.getElementById('adminCodeInput').value;
+
+   
+    if (enteredCode === adminCode) {
+        
+        window.location.href = '/gallery.html';
+    } else {
+
+        alert('Incorrect admin code. Access denied.');
+    }
+}

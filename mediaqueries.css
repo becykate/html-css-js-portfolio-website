@@ -42,8 +42,19 @@
         margin-top: 0;
     }
 
-  
+    #gallery-container {
+        margin: 1%;
+        gap: 1rem;
+    }
+
+    #map {
+        height: 46vw;
+        margin: 2%;
+        gap: 1rem;
+    }
 }
+  
+
 
 
 @media screen and (max-width: 600px) {
@@ -97,5 +108,15 @@
         text-align: justify;
     }
 
-  
+    #gallery-container {
+        margin: 1%;
+        gap: 1rem;
+    }
+
+    #map {
+        width: auto;
+        height: 46vw;
+        margin: 2%;
+        gap: 1rem;
+    }
 }
