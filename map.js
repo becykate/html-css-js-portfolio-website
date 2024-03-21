@@ -22,4 +22,4 @@ var center = checkpointCoordinates.reduce(function(acc, coord) {
 }, [0, 0]);
 
 // Set the map's initial view to the calculated center
-map.setView(center, 13);
+map.setView(center, 7);
