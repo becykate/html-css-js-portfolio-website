@@ -1,5 +1,5 @@
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1920px) {
    #profile {
     height: 83vh;
     margin-bottom: 6rem;
@@ -7,6 +7,9 @@
    .about-containers {
     flex-wrap: wrap;
    }
+   section, .section-container {
+    height: fit-content;
+}
 }
 
 
