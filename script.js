@@ -106,3 +106,24 @@ function handleAdminPasswordSubmit() {
         alert('Incorrect admin code. Access denied.');
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.read-more-btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const container = this.closest('.details-container');
+            const textContent = container.querySelector('.read-more-text');
+            const isExpanded = container.classList.toggle('expanded');
+
+            if (isExpanded) {
+                textContent.style.display = 'block';
+                this.textContent = 'Read Less';
+            } else {
+                textContent.style.display = 'none';
+                this.textContent = 'Read More';
+            }
+        });
+    });
+});
+
