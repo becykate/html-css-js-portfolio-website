@@ -635,8 +635,29 @@ footer p {
     z-index:  0;
   }
   
-  .leaflet-marker-icon {
-    filter: hue-rotate(60deg);
+  /* Basic Marker Styling */
+.custom-icon .leaflet-marker-pin {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff; 
+  }
+  
+  /* Marker Colors for Each Category */
+  .marker-hotel .leaflet-marker-pin {
+    background-color: rgb(121, 39, 228); 
+  }
+  
+  .marker-activity .leaflet-marker-pin {
+    background-color: rgb(24, 92, 180); 
+  }
+  
+  .marker-restaurant .leaflet-marker-pin {
+    background-color: orange; 
+  }
+  
+  .marker-default .leaflet-marker-pin {
+    background-color: gray; 
   }
 
   #gallery-container {
@@ -647,3 +668,4 @@ footer p {
     margin: 1rem;
             
   }
+  
