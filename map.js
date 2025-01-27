@@ -1,25 +1,42 @@
 import { checkpoints } from './checkpoints.js';
 
+// Initialize the Map
 var map = L.map('map');
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}&lang=en', {
-    attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a> contributors',
-    id: 'mapbox/streets-v11', 
-    accessToken: 'pk.eyJ1IjoiYmVjeWthdGUiLCJhIjoiY2x0emFvZ2E2MG4xZzJscWZwOHcyYXdkdSJ9.5FYtw-BGKC4sTTHPOpL_pA', 
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a> contributors',
+  id: 'mapbox/streets-v11',
+  accessToken: 'pk.eyJ1IjoiYmVjeWthdGUiLCJhIjoiY2x0emFvZ2E2MG4xZzJscWZwOHcyYXdkdSJ9.5FYtw-BGKC4sTTHPOpL_pA',
 }).addTo(map);
-map.getContainer().classList.add('mapboxgl-locale-en');
 
-var checkpointCoordinates = [];
-// Add markers to the map and store their coordinates
-checkpoints.forEach(function(checkpoint) {
-  var marker = L.marker([checkpoint.Latitude, checkpoint.Longitude]).addTo(map);
-  marker.bindPopup(`<b>${checkpoint.CheckpointName}</b><br>${checkpoint.CheckpointDescription}`).openPopup();
-  checkpointCoordinates.push([checkpoint.Latitude, checkpoint.Longitude]); // Store coordinates
+// Define category colors
+const categoryColors = {
+  Hotel: "rgb(121, 39, 228)", // Purple for hotels
+  Activity: "rgb(24, 92, 180)", // Blue for activities
+  Restaurant: "orange", // Orange for restaurants
+  Default: "gray" // Default grey for others
+};
+
+// Add markers to the map
+checkpoints.forEach(function (checkpoint) {
+  // Create custom icon with dynamically set background color
+  const icon = L.divIcon({
+    className: 'custom-icon',
+    html: `<div class="leaflet-marker-pin" style="background-color: ${categoryColors[checkpoint.Category]}"></div>`,
+    iconSize: [10, 10],    // Size of the marker (adjusted to 10px x 10px)
+    iconAnchor: [5, 5],    // Set the anchor to the center of the pin (half the size)
+    popupAnchor: [0, -8],  // Adjust position of the popup (above the marker)
+  });
+
+  // Create marker with custom icon and bind popup
+  const marker = L.marker([checkpoint.Latitude, checkpoint.Longitude], { icon })
+    .addTo(map)
+    .bindPopup(`
+      <b>${checkpoint.CheckpointName}</b><br>
+      ${checkpoint.CheckpointDescription}<br>
+      <small>Category: ${checkpoint.Category}</small>
+    `);
 });
 
-// Calculate the average latitude and longitude for the center of the map
-var center = checkpointCoordinates.reduce(function(acc, coord) {
-    return [acc[0] + coord[0] / checkpointCoordinates.length, acc[1] + coord[1] / checkpointCoordinates.length];
-}, [0, 0]);
-
-// Set the map's initial view to the calculated center
-map.setView(center, 7);
+// Auto-center map to include all checkpoints
+const bounds = L.latLngBounds(checkpoints.map(cp => [cp.Latitude, cp.Longitude]));
+map.fitBounds(bounds);
