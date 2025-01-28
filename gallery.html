@@ -46,15 +46,32 @@
                 </div>
               </div>
             </nav>
-            <h1 class="title" id="trailName"> Japan 2025 Itinerary!</h1>
+            <h1 class="title" id="trailName">Japan 2025 Itinerary!</h1>
+  
+  <div id="map"></div>
+  
+  <!-- Flight Tracker Section on the right -->
+  <div id="flight-tracker">
+    <h2>Flight Tracker</h2>
 
-            <div id="map"></div>
-            
-            <div id="gallery-container">
+    <section id="live-flights">
+      <h3>Live Flights</h3>
+      <ul></ul> 
+    </section>
 
-<button class="btn btn-color-2" onclick="window.open('https://photos.app.goo.gl/KN274vxzsBeJTbL26', '_blank')">Come See Our 2025 Japan Travel Photos!</button>
+    <section id="upcoming-flights">
+      <h3>Upcoming Flights</h3>
+      <ul></ul> 
+    </section>
+  </div>
 
-</div>
+  <!-- Gallery Section below map -->
+  <div id="gallery-container">
+    <button class="btn btn-color-2" onclick="window.open('https://photos.app.goo.gl/KN274vxzsBeJTbL26', '_blank')">Come See Our 2025 Japan Travel Photos!</button>
+  </div>
+
+
+
 <h1 class="title" id="trailName"> My Travels in 2024!</h1>
 S
 <div id="gallery-container">
@@ -69,6 +86,7 @@ S
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="script.js"></script>
+<script src="flights.js"></script>
   
   </body>
   <footer>
